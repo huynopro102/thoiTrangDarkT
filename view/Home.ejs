@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/images/logo2.png">
+    <!-- Remix icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/css/swiper-bundle.min.css" />
+    <!-- link css -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/css/style.css">
+
+    <!-- bắt sự kiện onclick đăng xuất -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/btn_dang_xuat.js">
+
+    <!-- css gio hang an hien -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/giohang.css">
+
+
+    <style>
+        /* Thêm quy tắc CSS cho phần có class là 'showcart' */
+    </style>
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="logo">
+                <a href="/">
+                    <!-- <img src="https://thoitrangdarkt-com.onrender.com/congkhai/logo.png" alt="" class="logo-image"> -->
+                    <h3 class="animate-charcter">DarkT</h3>
+                </a>
+            </div>
+
+            <!-- <h2 class="name">Nyx</h2> -->
+
+            <div class="menu" id="menu">
+                <ul class="list">
+                    <li class="list-item">
+                        <a href="/" class="list-link current">Trang Chủ</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="/products" class="list-link">Sản Phẩm</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="/carts/<%= id.length == 0 ? '0' : id %>" class="list-link">giỏ hàng</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="/contact" class="list-link">Liên Hệ</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link screen-lg-hidden">Đăng nhập</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link screen-lg-hidden">Đăng ký</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="list list-right">
+
+                <input type="text" hidden class="id_user" value="<%= id%>">
+
+                <button hidden class="btn place-items-center" id="search-icon">
+
+                </button>
+
+                <button class="btn place-items-center" id="theme-toggle-btn">
+
+                </button>
+
+
+                <button class="btn place-items-center" id="cart-icon">
+
+                    <h3 class="click_profile">
+                        <% if(data.length==0) { %>
+
+                            <% } else { %>
+
+                                <%= "xin chào " + data %>
+
+                                    <% } %>
+
+                    </h3>
+                    <% console.log("data : ", data )  %>
+                    
+                </button>
+                
+
+                <button class=" btn_icon_cart place-items-center" id="cart-icon">
+
+                        <span class="icon_show_cart">0</span>
+
+                        <i class="ri-shopping-cart-line"></i>
+
+                </button>
+
+                <!-- gio hang -->
+                <div class="showcart none">
+                    <div class="row mb">
+                        <table class="table-header">
+                            <tr>
+                                <th>STT</th>
+                                <th>Hình</th>
+                                <th>Tên</th>
+                                <th>giá</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                            </tr>
+
+                            <!--  danh sach san pham -->
+                            <tbody class="my_cart">
+
+                                <tr>
+                                    <td>1</td>
+                                    <td><img style="width: 50px;"
+                                            src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702134099453-323829208-aobaba2.png"
+                                            alt=""></td>
+                                    <td>Đồng hồ</td>
+                                    <td>10</td>
+                                    <td>1</td>
+                                    <td>
+                                        <div>10</div>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>1</td>
+                                    <td><img style="width: 50px;"
+                                            src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702134099453-323829208-aobaba2.png"
+                                            alt=""></td>
+                                    <td>Đồng hồ</td>
+                                    <td>10</td>
+                                    <td>1</td>
+                                    <td>
+                                        <div>10</div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td><img style="width: 50px;"
+                                            src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702134099453-323829208-aobaba2.png"
+                                            alt=""></td>
+                                    <td>Đồng hồ</td>
+                                    <td>10</td>
+                                    <td>1</td>
+                                    <td>
+                                        <div>10</div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+
+                            <tr>
+                                <th colspan="5">Tổng đơn hàng</th>
+                                <th>
+                                    <div class="tong_don_hang">10</div>
+                                </th>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+                <button class="btn place-items-center screen-lg-hidden menu-toggle-icon" id="menu-toggle-icon">
+
+                </button>
+
+                <% if(data.length==0) { %>
+                    <a href="#" class="list-link screen-sm-hidden" id="btn_dang_xuat">
+                        <form action="/login" method="get">
+                            <input type="submit" value="Đăng Nhập">
+                        </form>
+                    </a>
+                    <% } else { %>
+                        <a href="/" class="list-link screen-sm-hidden" id="btn_dang_xuat">
+                            <form action="/" method="post">
+                                <input type="submit" value="Đăng Xuất" onclick=" set_value_cart()">
+                            </form>
+                        </a>
+                        <% } %>
+
+
+                            <a href="/register" class="list-link screen-sm-hidden btn sign-up-btn fancy-border">
+                                <span>Đăng ký</span>
+                            </a>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- Search -->
+    <div class="search-form-container container" id="search-form-container">
+        <div class="form-container-inner">
+            <form action="" class="form">
+                <input type="text" class="form-input" placeholder="Bạn muốn tìm kiếm gì?">
+                <button class="btn form-btn" type="submit">
+                    <i class="ri-search-line"></i>
+                </button>
+            </form>
+            <span class="form-note">Nhấn Esc để đóng</span>
+        </div>
+
+        <button class="btn form-close-btn place-items-center" id="form-close-btn">
+            <i class="ri-close-line"></i>
+        </button>
+    </div>
+
+    <!-- Featured articles -->
+
+    <section class="section-header-offset">
+        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/assets/images/banner_web.png" alt="" srcset="">
+    </section>
+
+
+    <!-- Quick read -->
+    <section class="quick-read section">
+
+        <div class="container">
+
+            <h2 class="title section-title" data-name="Đọc Nhanh">XEM NHANH</h2>
+
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+
+                    <% list_sp.map((item)=> { %>
+                        <a href="/productsDetail/<%= item.id%>" class="article swiper-slide">
+
+                            <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/<%= item.image%>" alt=""
+                                class="article-image">
+
+                            <div class="article-data">
+                                <span></span>
+                                <span class="article-data-spacer"></span>
+                                <span></span>
+                            </div>
+
+                        </a>
+                        <% }) %>
+
+
+
+                </div>
+
+                <div class="swiper-button-prev swiper-controls"></div>
+                <div class="swiper-button-next swiper-controls"></div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Older posts -->
+    <section class="older-posts section">
+
+        <div class="container">
+
+            <h2 class="title section-title" data-name="Bài viết cũ">Bài viết cũ</h2>
+
+            <div class="older-posts-grid-wrapper d-grid">
+
+                <a href="#" class="article d-grid">
+                    <div class="older-posts-article-image-wrapper">
+                        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702134099453-323829208-aobaba2.png" alt=""
+                            class="article-image">
+                    </div>
+
+                    <div class="article-data-container">
+
+                        <div class="article-data">
+                            <span>Aug 5th 2022</span>
+                            <span class="article-data-spacer"></span>
+                            <span>8 min đọc </span>
+                        </div>
+
+                        <h3 class="title article-title">Khám Phá Về Áo Bà Ba - Đặc Trưng Trang Phục Việt Nam</h3>
+                        <p class="article-description">Tìm hiểu về lịch sử và ý nghĩa của chiếc áo bà ba, một biểu tượng
+                            đặc trưng của trang phục truyền thống Việt Nam.</p>
+                    </div>
+                </a>
+
+
+                <a href="#" class="article d-grid">
+                    <div class="older-posts-article-image-wrapper">
+                        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702193719521-261459302-mu%20long%20cuu.jpg"
+                            alt="" class="article-image">
+                    </div>
+
+                    <div class="article-data-container">
+
+                        <div class="article-data">
+                            <span>Aug 5th 2022</span>
+                            <span class="article-data-spacer"></span>
+                            <span>8 min đọc </span>
+                        </div>
+
+                        <h3 class="title article-title">Bộ Sưu Tập Mũ Beret Nữ 2022</h3>
+                        <p class="article-description">Khám phá những hình ảnh đẹp về mũ beret nữ, nơi thời trang và
+                            phong cách gặp gỡ, mang lại cảm giác thời thượng và duyên dáng.</p>
+                    </div>
+                </a>
+
+
+                <a href="#" class="article d-grid">
+                    <div class="older-posts-article-image-wrapper">
+                        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702650377424-874718477-1702233228303-217457278-ao%20so%20mi%20nam.jpg"
+                            alt="" class="article-image">
+                    </div>
+
+                    <div class="article-data-container">
+
+                        <div class="article-data">
+                            <span>Aug 5th 2022</span>
+                            <span class="article-data-spacer"></span>
+                            <span>8 min đọc </span>
+                        </div>
+
+                        <h3 class="title article-title">Bộ Sưu Tập Ảnh Áo Sơ Mi Nam Năm 2022</h3>
+                        <p class="article-description">Khám phá những hình ảnh tuyệt vời về thời trang áo sơ mi nam năm
+                            2022, nơi tinh tế và phong cách gặp gỡ.</p>
+                    </div>
+                </a>
+
+
+                <a href="#" class="article d-grid">
+                    <div class="older-posts-article-image-wrapper">
+                        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702474647741-198297940-giay%20adidas.jpg"
+                            alt="" class="article-image">
+                    </div>
+
+                    <div class="article-data-container">
+
+                        <div class="article-data">
+                            <span>Aug 5th 2022</span>
+                            <span class="article-data-spacer"></span>
+                            <span>8 min đọc </span>
+                        </div>
+
+                        <h3 class="title article-title">Khám Phá Về Đôi Giày adidas X Speedportal .1 FG</h3>
+                        <p class="article-description">Hãy cùng chúng tôi khám phá về mẫu giày adidas X Speedportal .1
+                            FG mới nhất, mang đến trải nghiệm thoải mái và phong cách đầy cá tính.</p>
+                    </div>
+                </a>
+
+
+                <a href="#" class="article d-grid">
+                    <div class="older-posts-article-image-wrapper">
+                        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702450766291-526626297-giay%20vans.jpg"
+                            alt="" class="article-image">
+                    </div>
+
+                    <div class="article-data-container">
+
+                        <div class="article-data">
+                            <span>Aug 5th 2022</span>
+                            <span class="article-data-spacer"></span>
+                            <span>8 min đọc </span>
+                        </div>
+
+                        <h3 class="title article-title">Khám Phá Về Giày Vans Old Skool - Phong Cách Đường Phố</h3>
+                        <p class="article-description">Hãy cùng chúng tôi khám phá về đôi giày Vans Old Skool, biểu
+                            tượng của phong cách đường phố và sự thoải mái.</p>
+                    </div>
+                </a>
+
+
+                <a href="#" class="article d-grid">
+                    <div class="older-posts-article-image-wrapper">
+                        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702193655197-829090888-mu2.jpg" alt=""
+                            class="article-image">
+                    </div>
+
+                    <div class="article-data-container">
+
+                        <div class="article-data">
+                            <span>Aug 5th 2022</span>
+                            <span class="article-data-spacer"></span>
+                            <span>8 min đọc </span>
+                        </div>
+
+                        <h3 class="title article-title">Hướng dẫn chọn mua đàn guitar cho người mới tập</h3>
+                        <p class="article-description">Khám phá thế giới của các loại guitar cơ bản và tìm hiểu cách lựa
+                            chọn đàn phù hợp với bạn khi bạn mới bắt đầu học guitar.</p>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="see-more-container">
+                <a href="#" class="btn see-more-btn place-items-center">
+                    Xem thêm <i class="ri-arrow-right-s-line"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Popular tags -->
+    <section class="popular-tags section">
+
+        <div class="container">
+
+            <h2 class="title section-title" data-name="Thẻ phổ biến">Thông tin liên hệ</h2>
+            <div class="margin">
+
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1164.9540220586048!2d106.78417151774887!3d10.855423789429961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276e7ea103df%3A0xb6cf10bb7d719327!2zSFVURUNIIC0gxJDhuqFpIGjhu41jIEPDtG5nIG5naOG7hyBUUC5IQ00gKFRodSBEdWMgQ2FtcHVzKQ!5e0!3m2!1svi!2s!4v1702738583246!5m2!1svi!2s"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Newsletter -->
+    <section class="newsletter section">
+
+        <div class="container">
+
+            <h2 class="title section-title" data-name="Bản tin">Bản tin</h2>
+
+            <div class="form-container-inner">
+
+                <h6 class="title newsletter-title">Đăng ký nhận Bản Tin</h6>
+                <p class="newsletter-description">Chúng tôi chờ đợi việc chia sẻ những tin
+                    tức tuyệt vời với bạn. Đăng ký Bản Tin DarkT và
+                    là người đầu tiên nhận được những cập nhật nóng hổi.</p>
+
+                <form action="" class="form">
+                    <input type="text" class="form-input" placeholder="Nhập email của bạn">
+                    <button class="btn form-btn" type="submit">
+                        <i class="ri-mail-send-line"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer section">
+
+        <div class="footer-container container d-grid">
+
+            <div class="company-data">
+                <a href="/">
+                    <!-- <img src="./assets/images/icon.png" alt=""> -->
+                    <h3 class="animate-charcter">DarkT </h3>
+                </a>
+                <p class="company-description">
+                    DarkT - Nơi tinh tế gặp gỡ với phong cách. Chúng tôi không chỉ bán hàng,
+                    chúng tôi tạo nên trải nghiệm độc đáo cho khách hàng.
+                </p>
+
+                <ul class="list social-media">
+                    <li class="list-item">
+                        <a href="https://www.facebook.com/Narutocunung/" class="list-link">
+                            <i class="ri-facebook-circle-line"></i>
+                        </a>
+                        <a href="https://www.instagram.com/khanhho741/" class="list-link">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://twitter.com/khanhho741" class="list-link">
+                            <i class="ri-twitter-line"></i>
+                        </a>
+                        <a href="#" class="list-link">
+                            <i class="ri-youtube-line"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <span class="copyright-notice">&copy; 2022 DarkT. All rights reserved</span>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Danh Mục</h6>
+
+                <ul class="list footer-list">
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thời Trang</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Nghệ Thuật Sáng Tạo
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Cosplay</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Công Nghệ
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thể Thao
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Khoa Học
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Liên Kết Hữu Ích</h6>
+
+                <ul class="list footer-list">
+                    <li class="list-item">
+                        <a href="#" class="list-link">Trang chủ</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Yếu tố</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thẻ</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Tác giả</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thành viên</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Vấn đề</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Công Ty</h6>
+
+                <ul class="list footer-list">
+                    <li class="list-item">
+                        <a href="#" class="list-link">Liên hệ chúng tôi</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">F.A.Q</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Sự nghiệp</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Người sáng lập</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thành viên</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Địa chỉ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>
+
+<!-- Swiper.js -->
+<script src="https://thoitrangdarkt-com.onrender.com/congkhai/assets/js/swiper-bundle.min.js"></script>
+
+<!-- Js -->
+<script src="https://thoitrangdarkt-com.onrender.com/congkhai/assets/js/main.js"></script>
+
+<!-- nhúng jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous">
+    </script>
+
+<script>
+
+
+    // click để chuyển sang trang profile
+    $(document).ready(function () {
+        const click_profile = document.querySelector(".click_profile")
+        click_profile.addEventListener("click", (e) => {
+            console.log("id hien tai ", document.querySelector(".id_user").value)
+            document.location.href = `/profile/${document.querySelector(".id_user").value}`
+        })
+    })
+
+
+
+
+
+    // khi click thì sẽ reset lại giỏ hàng 
+
+    function set_value_cart() {
+        localStorage.clear()
+    }
+
+    $(document).ready(function () {
+
+        console.log("local storage la ", localStorage123)
+        const click_profile = document.querySelector(".click_profile")
+        click_profile.addEventListener("click", (e) => {
+            console.log("id hien tai ", document.querySelector(".id_user").value)
+            document.location.href = `/profile/${document.querySelector(".id_user").value}`
+        })
+    })
+
+
+    //  an hien gio hang
+    document.addEventListener("DOMContentLoaded", function () {
+        const cartIcon = document.querySelector(".btn_icon_cart")
+        const showCart = document.querySelector(".showcart");
+
+        // Show cart
+        cartIcon.addEventListener("click", function () {
+            loadDuLieuVoGioHang()
+            showCart.classList.toggle("block")
+            loadDuLieuVoGioHang()
+        });
+
+
+    });
+
+    // cap nhat gio hang
+    function capNhatSoLuong(sl) {
+        const icon_show_cart = document.querySelector(".icon_show_cart")
+        icon_show_cart.innerText = sl
+    }
+
+    // load du lieu vo gio hang
+    function loadDuLieuVoGioHang() {
+        let tongDonHang = 0;
+
+        // Lấy dữ liệu từ localStorage
+        let giohang = JSON.parse(localStorage.getItem("giohang")) || [];
+
+        // Hiển thị sản phẩm trong giỏ hàng
+        document.querySelector(".my_cart").innerHTML = giohang.map((item, index) => {
+            let tongThanhTien = parseInt(item.gia) * parseInt(item.soluongsp);
+            tongDonHang += tongThanhTien;
+
+            return `
+            <tr>
+                <td>${index + 1}</td>
+                <td><img style="width: 50px;" src="${item.hinh}" alt=""></td>
+                <td>${item.tensp}</td>
+                <td>${item.gia}</td>
+                <td>${item.soluongsp}</td>
+                <td>
+                    <div>${tongThanhTien}</div>
+                </td>
+            </tr>
+        `;
+        });
+
+        // Hiển thị tổng đơn hàng
+        document.querySelector(".tong_don_hang").innerText = tongDonHang;
+    }
+    // Thực hiện cập nhật số lượng khi trang được tải
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy dữ liệu từ localStorage
+        let giohang = JSON.parse(localStorage.getItem("giohang")) || [];
+
+        // Cập nhật số lượng trên biểu tượng giỏ hàng
+        capNhatSoLuong(giohang.length);
+
+        // load du lieu vo cart 
+        loadDuLieuVoCarts();
+    });
+
+
+
+</script>
+
+</html>

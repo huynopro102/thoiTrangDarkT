@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/images/logo2.png">
+    <!-- Remix icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/css/swiper-bundle.min.css" />
+    <!-- link css -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/css/style.css">
+
+
+    <!-- bắt sự kiện onclick đăng xuất -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/btn_dang_xuat.js">
+
+    <!-- link css page product -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/sub_header_footer.css">
+
+    <!-- css gio hang -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/giohang.css">
+
+
+    <style>
+        .mainDiv {
+            display: flex;
+            min-height: 100%;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .cardStyle {
+            width: 500px;
+            border-color: white;
+            background: #fff;
+            padding: 36px 0;
+            border-radius: 4px;
+            margin: 30px 0;
+            box-shadow: 0px 0 2px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        #signupLogo {
+            max-height: 100px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .formTitle {
+            font-weight: 600;
+            margin-top: 20px;
+            color: #2F2D3B;
+            text-align: center;
+        }
+
+        .inputLabel {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 6px;
+            margin-top: 24px;
+        }
+
+        .inputDiv {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        input {
+            height: 40px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: none;
+            border: solid 1px #ccc;
+            padding: 0 11px;
+        }
+
+        input:disabled {
+            cursor: not-allowed;
+            border: solid 1px #eee;
+        }
+
+        .buttonWrapper {
+            margin-top: 40px;
+        }
+
+        .submitButton {
+            width: 70%;
+            height: 40px;
+            margin: auto;
+            display: block;
+            color: #fff;
+            background-color: #065492;
+            border-color: #065492;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.035);
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .submitButton:disabled,
+        button[disabled] {
+            border: 1px solid #cccccc;
+            background-color: #cccccc;
+            color: #666666;
+        }
+
+
+
+
+        /* css lich su mua hang */
+        .shopping-cart {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Style the column labels inside the shopping cart */
+        .column-labels {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Set a fixed width for each column label */
+        .product-image,
+        .product-price,
+        .product-quantity,
+        .product-removal,
+        .product-line-price {
+            flex: 1;
+        }
+
+        /* Style individual product rows inside the shopping cart */
+        .product {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .product img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 15px;
+        }
+
+        .product-details {
+            flex: 2;
+        }
+
+        .product-title {
+            font-weight: bold;
+        }
+
+        .product-price,
+        .product-quantity,
+        .product-removal,
+        .product-line-price {
+            flex: 1;
+        }
+
+        .product-quantity input {
+            width: 50px;
+            text-align: center;
+        }
+
+
+        .product-removal button {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Style the totals section at the bottom of the shopping cart */
+
+        /* Style the Tổng Hóa Đơn label */
+        .totals-item-total label {
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            color: #333;
+            /* Change the color as needed */
+            /* Add margin to create space between "Tổng Hóa Đơn" and "Checkout" */
+            margin-right: 10px;
+            justify-content: flex-end;
+            vertical-align: middle;
+        }
+
+
+        .totals {
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            /* Đẩy về phía bên phải */
+        }
+
+        /* Style individual totals items */
+        .totals-item {
+            width: 21%;
+            /* Adjust as needed */
+            margin-bottom: 10px;
+        }
+
+
+
+        /* Style the checkout button */
+        .checkout {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 20px;
+            /* Adjust as needed */
+        }
+
+        /* Hover effect for the checkout button */
+        .checkout:hover {
+            background-color: #45a049;
+        }
+
+        /* Make more adjustments for phone */
+        @media screen and (max-width: 350px) {
+            .product-removal {
+                float: right;
+            }
+
+            .product-line-price {
+                float: right;
+                clear: left;
+                width: auto;
+                margin-top: 10px;
+            }
+
+            .product .product-line-price:before {
+                content: 'Item Total: $';
+            }
+
+            .totals {
+                justify-content: flex-end;
+
+                /* Đẩy về phía bên phải */
+                .totals-item {
+                    label {
+                        width: 60%;
+                    }
+
+                    .totals-value {
+                        width: 40%;
+                    }
+                }
+            }
+        }
+
+
+        /* form thông tin đặt hàng */
+        #frm-send-contact textarea,
+        #frm-send-contact button,
+        #frm-send-contact input {
+            margin: 10px;
+        }
+
+        .btn-submit:hover {
+            color: aliceblue;
+            background-color: #9a9898;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header header_pt" id="header" style="padding: 0px;">
+        <nav class="navbar container">
+            <div class="logo">
+                <a href="/">
+                    <h3 class="animate-charcter">DarkT</h3>
+                </a>
+            </div>
+
+            <!-- <h2 class="name">Nyx</h2> -->
+
+            <div class="menu" id="menu">
+                <ul class="list">
+                    <li class="list-item">
+                        <a href="/" class="list-link ">Trang Chủ</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="/products" class="list-link">Sản Phẩm</a>
+                    </li>
+
+                    <li class="list-item">
+                        <a href="/carts/<%= id.length == 0 ? '0' : id %>" class="list-link">Giỏ Hàng</a>
+                    </li>
+
+                    <li class="list-item">
+                        <a href="/contact" class="list-link">Liên Hệ</a>
+                    </li>
+
+
+                    <li class="list-item">
+                        <a href="#" class="list-link screen-lg-hidden">Đăng nhập</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link screen-lg-hidden">Đăng ký</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="list list-right">
+
+                <h3 style="cursor: pointer;">
+                    <%= data.length==0 ? '' : 'xin chào ' +data %>
+                </h3>
+                <%= console.log("data : ",data) %>
+
+                <button class=" btn place-items-center" id="cart-icon">
+
+                    </button>
+
+                    <button class="btn place-items-center" id="cart-icon">
+                        <i class="ri-shopping-cart-line"></i>
+                    </button>
+
+
+                    <button class="btn place-items-center screen-lg-hidden menu-toggle-icon" id="menu-toggle-icon">
+                        <i class="ri-menu-3-line open-menu-icon"></i>
+                        <i class="ri-close-line close-menu-icon"></i>
+                    </button>
+
+                    <% if(data.length>0 ) { %>
+                        <form action="/" method="post">
+                            <button type="submit" class="list-link screen-sm-hidden" style="cursor: pointer;">
+                                Đăng Xuất
+                            </button>
+                        </form>
+                        <% } else { %>
+                            <a href="/login" class="list-link screen-sm-hidden">
+                                Đăng nhập
+                            </a>
+                            <% } %>
+                                <a href="/register" class="list-link screen-sm-hidden btn sign-up-btn fancy-border">
+                                    <span>Đăng ký</span>
+                                </a>
+
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- container -->
+
+    <div class="container_main" style="margin-top: 74px;">
+        <div class="mainDiv">
+            <div class="cardStyle">
+                <form name="signupForm" id="signupForm">
+
+                    <img src="" id="signupLogo" />
+
+                    <h2 class="formTitle">
+                        Thay Đổi Mật Khẩu Của Bạn
+                    </h2>
+
+                    <div class="inputDiv">
+                        <label class="inputLabel" for="password">mật khẩu cũ</label>
+                        <input type="password" id="old_password" name="password" required>
+                    </div>
+
+
+                    <div class="inputDiv">
+                        <label class="inputLabel" for="password">Mật khẩu mới</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+
+
+                    <div class="inputDiv">
+                        <label class="inputLabel" for="confirmPassword">xác nhận mật khẩu mới</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword">
+                    </div>
+
+                    <div class="buttonWrapper">
+                        <button id="btn_continue" class="submitButton pure-button pure-button-primary">
+                            <span>Continue</span>
+                            <span id="loader"></span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+        <!-- lịch sử mua hàng nếu có -->
+        <% item_list_confirm.map((item,index)=> { %>
+
+            <div class="shopping-cart">
+
+                <h1 style="transform: translate(100%); margin-right: 61%; margin-bottom: 40px; margin-top: 30px;">
+                    Lịch Sử
+                    Mua Hàng <%= index +1 %>
+                </h1>
+
+                <div class="column-labels">
+                    <label class="product-image">Hình</label>
+                    <label class="product-image">Tên</label>
+                    <label class="product-price">Giá</label>
+                    <label class="product-quantity">Số Lượng</label>
+                    <label class="product-line-price">Tổng</label>
+                </div>
+
+                <!-- ở đây -->
+                <% let total=0 %>
+                    <% item.forEach((item2,index2)=>{ %>
+
+                        <div class="my_body_carts">
+                            <div class="product">
+
+                                <div class="product-image">
+                                    <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/<%= item2.image%>">
+                                </div>
+
+                                <div class=" product-price">
+                                    <%= item2.name%>
+                                </div>
+
+                                <div class=" product-price">
+                                    <%= item2.PricePerUnit.toFixed(2) %>
+                                </div>
+
+                                <div class="product-quantity">
+                                    <input type="number" value="<%= item2.Quantity %>" min="1">
+                                </div>
+
+                                <div class="product-line-price">
+                                    <%= item2.TotalPrice.toFixed(2) %>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <% total +=item2.TotalPrice %>
+
+                            <% }) %>
+
+                                <!-- ở đây -->
+                                <div class="totals">
+                                    <div class="totals-item totals-item-total">
+                                        <label>Tổng Hóa Đơn <%= total.toFixed(2) %>$ </label>
+                                        <label>
+                                            <%= item[0].CustomerName %>
+                                        </label>
+                                        <label>
+                                            <%= item[0].CustomerEmail %>
+                                        </label>
+                                        <label>
+                                            <%= item[0].CustomerAddress %>
+                                        </label>
+                                        <label>
+                                            <%= item[0].CustomerPhone %>
+                                        </label>
+
+
+
+                                    </div>
+                                </div>
+            </div>
+
+
+            <!-- đơn hàng đang giao -->
+            <% }) %>
+
+                <% item_list_no_confirm.forEach( (item1,index1)=> { %>
+                    <div class="shopping-cart">
+
+                        <h1
+                            style="transform: translate(100%); margin-right: 61%; margin-bottom: 40px; margin-top: 30px;">
+                            đơn hàng đang giao <%= index1 +1%>
+                        </h1>
+
+                        <div class="column-labels">
+                            <label class="product-image">Hình</label>
+                            <label class="product-image">Tên</label>
+                            <label class="product-price">Giá</label>
+                            <label class="product-quantity">Số Lượng</label>
+                            <label class="product-line-price">Tổng</label>
+                        </div>
+                        <% let TotalPriceAllRows=0 %>
+
+
+                            <!-- ở đây -->
+                            <% let total=0 %>
+                                <% item1.forEach((item2,index2)=>{ %>
+
+                                    <div class="my_body_carts">
+                                        <div class="product">
+
+                                            <div class="product-image">
+                                                <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/<%= item2.image%>">
+                                            </div>
+
+
+                                            <div class=" product-price">
+                                                <%= item2.name%>
+                                            </div>
+
+                                            <div class=" product-price">
+                                                <%= item2.PricePerUnit.toFixed(2) %>
+                                            </div>
+
+                                            <div class="product-quantity">
+                                                <input type="number" value="<%= item2.Quantity %>" min="1">
+                                            </div>
+
+                                            <div class="product-line-price">
+                                                <%= item2.TotalPrice.toFixed(2) %>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <% total +=item2.TotalPrice %>
+
+                                        <% }) %>
+                                            <!-- ở đây -->
+                                            <div class="totals">
+                                                <div class="totals-item totals-item-total">
+                                                    <label>Tổng Hóa Đơn <%= total.toFixed(2) %>$</label>
+                                                    <label>
+                                                        <%= item1[0].CustomerAddress %>
+                                                    </label>
+                                                    <label>
+                                                        <%= item1[0].CustomerName %>
+                                                    </label>
+
+                                                    <label>
+                                                        <%= item1[0].CustomerPhone %>
+                                                    </label>
+                                                </div>
+                                            </div>
+                    </div>
+                    <% }) %>
+
+
+
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer section">
+
+        <div class="footer-container container d-grid">
+
+            <div class="company-data">
+                <a href="/">
+                    <!-- <img src="./assets/images/icon.png" alt=""> -->
+                    <h3 class="animate-charcter">DarkT </h3>
+                </a>
+                <p class="company-description">
+                    DarkT - Nơi tinh tế gặp gỡ với phong cách. Chúng tôi không chỉ bán hàng,
+                    chúng tôi tạo nên trải nghiệm độc đáo cho khách hàng.
+                </p>
+
+                <ul class="list social-media">
+                    <li class="list-item">
+                        <a href="https://www.facebook.com/Narutocunung/" class="list-link">
+                            <i class="ri-facebook-circle-line"></i>
+                        </a>
+                        <a href="https://www.instagram.com/khanhho741/" class="list-link">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://twitter.com/khanhho741" class="list-link">
+                            <i class="ri-twitter-line"></i>
+                        </a>
+                        <a href="#" class="list-link">
+                            <i class="ri-youtube-line"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <span class="copyright-notice">&copy; 2022 DarkT. All rights reserved</span>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Danh Mục</h6>
+
+                <ul class="list footer-list">
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thời Trang</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Nghệ Thuật Sáng Tạo
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Cosplay</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Công Nghệ
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thể Thao
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Khoa Học
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Liên Kết Hữu Ích</h6>
+
+                <ul class="list footer-list">
+                    <li class="list-item">
+                        <a href="#" class="list-link">Trang chủ</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Yếu tố</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thẻ</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Tác giả</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thành viên</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Vấn đề</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Công Ty</h6>
+
+                <ul class="list footer-list">
+                    <li class="list-item">
+                        <a href="#" class="list-link">Liên hệ chúng tôi</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">F.A.Q</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Sự nghiệp</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Người sáng lập</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thành viên</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Địa chỉ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Nhúng JavaScript -->
+    <script src="https://thoitrangdarkt-com.onrender.com/congkhai/assets/js/main.js"></script>
+
+    <!-- nhúng jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous">
+    </script>
+    <script>
+
+
+        $(document).ready(() => {
+            $(document).on("click", "#btn_continue", function (e) {
+                e.preventDefault();
+
+                const old_password = $("#old_password").val();
+                const password = $("#password").val();
+                const confirmPassword = $("#confirmPassword").val();
+
+                if (password !== confirmPassword) {
+                    alert("không khớp mật khẩu")
+                    return
+                }
+
+                if (checkEmpty()) {
+                    $.ajax({
+                        url: `/profile/:${location.href.split('/')[4]}`,
+                        type: "POST",
+                        data: {
+                            id: location.href.split('/')[4],
+                            old_password: old_password,
+                            password: password,
+                            confirmPassword: confirmPassword,
+                        },
+                        success: function (response) {
+                            console.log(response)
+                            alert("Đã gửi thành công!");
+                            $("#old_password").val('');
+                            $("#password").val('');
+                            $("#confirmPassword").val('');
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            // Handle error
+                            console.log(xhr.status)
+                            console.log(textStatus)
+                            console.log(errorThrown)
+                            if (xhr.status === 404) {
+                                alert("not found user")
+                            } if (xhr.status === 403) {
+                                alert("mat khau cu sai")
+                            }
+                            else {
+                                // Generic error handling
+                                alert("error Server")
+
+                            }
+                        }
+                    });
+                }
+            });
+
+            function checkEmpty() {
+                const old_password = $("#old_password").val();
+                const password = $("#password").val();
+                const confirmPassword = $("#confirmPassword").val();
+
+                if (old_password === "" || password === "" || confirmPassword === "") {
+                    alert("Không để rỗng thông tin");
+                    return false;
+                }
+                return true;
+            }
+        });
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

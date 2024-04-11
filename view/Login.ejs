@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/loginRegisterForgotPassword.css">
+</head>
+
+<body>
+    <div class="login-01">
+        <div class="one-login  hvr-float-shadow">
+            <div class="one-login-head">
+                <h1>Đăng Nhập</h1>
+                <span></span>
+            </div>
+            <form method="post">
+
+                <li>
+                    <input type="text" class="text" placeholder="Email" name="UserName">
+                    <a href="#" class=" icon user"></a>
+                </li>
+
+                <li>
+                    <input type="password" class="password" placeholder="Password" name="Password">
+                    <a href="#" class=" icon lock"></a>
+                </li>
+
+                <div class="checkbox">
+                    <input type="checkbox" name="checkbox" checked>
+                    <i></i>Lưu thông tin đăng nhập
+                </div>
+
+                <div class="submit">
+                    <input class="btn-submit" type="submit" value="Đăng Nhập" style="
+                        margin-top: 13px " />
+                </div>
+
+                <h5>Bạn không có tài khoản ?<a href="https://thoitrangdarkt-com.onrender.com/register"> Đăng ký </a></h5>
+                <h5>Trở về trang chủ ?<a href="/"> Trang chủ </a></h5>
+                <div class="p-container">
+
+                    <h6>
+                        <a href="https://thoitrangdarkt-com.onrender.com/forgotpassword">Quên mật khẩu ?</a>
+                    </h6>
+                    <!-- <div class="clear"> </div> -->
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+<script>
+    const username = document.querySelector(".text");
+    const password = document.querySelector(".password");
+    const btn_sub_mit = document.querySelector(".btn-submit");
+    console.log(username.value, password.value);
+
+    btn_sub_mit.addEventListener("click", async (e) => {
+        e.preventDefault();
+        console.log(username.value, password.value);
+        const data = {
+            UserName: username.value,
+            Password: password.value,
+        };
+
+        if (username.value == "" || password.value == "") {
+            alert("Không để rỗng dữ liệu");
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/v1/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data), // Remove the extra object here
+            });
+
+            if (response.status === 200) {
+                // Xử lý khi đăng nhập thành công
+                alert("Đăng nhập thành công");
+                location.href = '/';
+            } else if (response.status == 201) {
+                alert("Đăng nhập admin thành công");
+                location.href = '/admin/v1/';
+            } else if (response.status == 505) {
+                alert("Không tìm thấy tài khoản");
+            } else {
+                // Xử lý khi đăng nhập thất bại
+                alert("Đăng nhập thất bại");
+            }
+        } catch (error) {
+            alert("Đã xảy ra lỗi:", error);
+        }
+    });
+
+
+
+</script>
+
+</html>

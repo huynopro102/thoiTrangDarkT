@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/images/logo2.png">
+    <!-- Remix icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/css/swiper-bundle.min.css" />
+    <!-- link css -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/css/style.css">
+
+
+    <!-- bắt sự kiện onclick đăng xuất -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/btn_dang_xuat.js">
+
+    <!-- link css page product -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/sub_header_footer.css">
+
+
+    <!-- gio hang -->
+    <link rel="stylesheet" href="https://thoitrangdarkt-com.onrender.com/congkhai/giohang.css">
+
+
+    <style>
+        /* Thêm hoặc sửa đổi các quy tắc CSS trong phần style của bạn */
+
+
+
+        .main_pt {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .aside_pt {
+            padding-top: 70px;
+        }
+
+        .filter_pt {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 250px;
+            margin-right: 10px;
+        }
+
+        .product_pt {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 15px;
+            width: 444px;
+            /* Thiết lập kích thước của sản phẩm */
+            height: 460px;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product_pt:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .product_pt img {
+            width: 100%;
+
+            max-height: 330px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .product_pt h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product_pt p {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .product_pt a {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 15px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .product_pt a:hover {
+            background-color: #0056b3;
+        }
+
+        .add-to-cart-button_pt {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .add-to-cart-button_pt:hover {
+            background-color: #218838;
+        }
+
+
+        .main_pt {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .section_pt {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product_pt {
+            width: calc(33.33% - 20px);
+            /* 20px là khoảng cách giữa các sản phẩm */
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+
+        .aside_pt {
+            width: 20%;
+        }
+
+        .filter_pt {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 30px 20px 30px 20px;
+        }
+
+        .filter-section {
+            margin: 10px 0;
+        }
+
+        .reset-btn_pt {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .reset-btn_pt:hover {
+            background-color: #c82333;
+        }
+
+        /* btn_sub , btn_add  , price_name , title_name  ,input_number_name */
+        .btn_submit {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .price_name {
+            position: absolute;
+            bottom: 6.3rem;
+        }
+
+        .title_name {
+            position: absolute;
+            bottom: 8rem;
+
+        }
+
+        .input_number_name {
+            position: absolute;
+            bottom: 5rem;
+            width: 50px;
+            /* Set the width to your preference */
+            height: 20px;
+            /* Set the height to your preference */
+            font-size: 14px;
+            /* Set the font size to your preference */
+            padding: 5px;
+            /* Add some padding for better visual appearance */
+            border: 1px solid #ddd;
+            /* Add border for better visibility */
+            border-radius: 5px;
+            /* Add border-radius for rounded corners */
+            box-sizing: border-box;
+            /* Include padding and border in the total width/height */
+        }
+
+        .btn_add {
+            position: absolute;
+            bottom: 10px;
+            left: 9rem;
+
+        }
+
+        /* Pagination styles */
+
+
+        .pagination_pt {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin-bottom: 0;
+            padding: 3rem;
+            display: flex;
+            justify-content: center;
+            /* Căn giữa phân trang */
+        }
+
+        .pagination_pt .page-item {
+            list-style: none;
+            margin: 0 5px;
+            /* Khoảng cách giữa các trang */
+            font-size: 14px;
+            /* Kích thước chữ cho thẻ li */
+        }
+
+        .pagination_pt .page-item .page-link {
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            margin: 0 2px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+            border-radius: 5px;
+            /* Bo tròn các góc */
+        }
+
+        .pagination_pt .page-item .page-link:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .pagination_pt .page-item.active .page-link {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .item_page {
+            padding: 1rem;
+            margin: 3px;
+            border: 1px solid #b3acac;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            margin: 0 2px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+
+
+        .active {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header header_pt" id="header" style="padding: 0px;">
+        <nav class="navbar container">
+            <div class="logo">
+                <a href="/">
+                    <h3 class="animate-charcter">DarkT</h3>
+                </a>
+            </div>
+
+            <!-- <h2 class="name">Nyx</h2> -->
+
+            <div class="menu" id="menu">
+                <ul class="list">
+                    <li class="list-item">
+                        <a href="/" class="list-link ">Trang Chủ</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="/products" class="list-link">Sản Phẩm</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="/carts/<%= id.length == 0 ? '0' : id %>" class="list-link">giỏ hàng</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="/contact" class="list-link">Liên Hệ</a>
+                    </li>
+
+                    <li class="list-item">
+                        <a href="#" class="list-link screen-lg-hidden">Đăng nhập</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link screen-lg-hidden">Đăng ký</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="list list-right">
+
+                <input type="text" hidden class="id_user" value="<%= id%>">
+
+
+                <button class=" btn place-items-center" id="cart-icon"></button>
+
+
+                <h3 class="click_profile" style="cursor: pointer;">
+                    <% if (data && data.length> 0) { %>
+                        xin chào <%= data %>
+                            <% } else { %>
+
+                                <% } %>
+                </h3>
+
+
+
+
+                <button class=" btn_icon_cart place-items-center" id="cart-icon">
+
+                    <span class="icon_show_cart">0</span>
+
+                    <i class="ri-shopping-cart-line"></i>
+
+                </button>
+
+
+                <!-- gio hang -->
+                <div class="showcart none">
+                    <div class="row mb">
+                        <table class="table-header">
+                            <tr>
+                                <th>STT</th>
+                                <th>Hình</th>
+                                <th>Tên</th>
+                                <th>giá</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                            </tr>
+
+                            <!--  danh sach san pham -->
+                            <tbody class="my_cart">
+
+                                <tr>
+                                    <td>1</td>
+                                    <td><img style="width: 50px;"
+                                            src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702134099453-323829208-aobaba2.png"
+                                            alt=""></td>
+                                    <td>Đồng hồ</td>
+                                    <td>10</td>
+                                    <td>1</td>
+                                    <td>
+                                        <div>10</div>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>1</td>
+                                    <td><img style="width: 50px;"
+                                            src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702134099453-323829208-aobaba2.png"
+                                            alt=""></td>
+                                    <td>Đồng hồ</td>
+                                    <td>10</td>
+                                    <td>1</td>
+                                    <td>
+                                        <div>10</div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td><img style="width: 50px;"
+                                            src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702134099453-323829208-aobaba2.png"
+                                            alt=""></td>
+                                    <td>Đồng hồ</td>
+                                    <td>10</td>
+                                    <td>1</td>
+                                    <td>
+                                        <div>10</div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+
+                            <tr>
+                                <th colspan="5">Tổng đơn hàng</th>
+                                <th>
+                                    <div class="tong_don_hang">10</div>
+                                </th>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+
+                <button class="btn place-items-center screen-lg-hidden menu-toggle-icon" id="menu-toggle-icon">
+                    <i class="ri-menu-3-line open-menu-icon"></i>
+                    <i class="ri-close-line close-menu-icon"></i>
+                </button>
+
+                <% if(data.length>0 ) { %>
+                    <form action="/" method="post">
+                        <button type="submit" class="list-link screen-sm-hidden">
+                            Đăng Xuất
+                        </button>
+                    </form>
+                    <% } else { %>
+                        <a href="/login" class="list-link screen-sm-hidden">
+                            Đăng nhập
+                        </a>
+                        <% } %>
+                            <a href="/register" class="list-link screen-sm-hidden btn sign-up-btn fancy-border">
+                                <span>Đăng ký</span>
+                            </a>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- container -->
+
+    <main class="main_pt">
+
+
+
+        <aside class="aside_pt" style="padding-top: 70px;">
+            <div class="filter filter_pt">
+                <h2>Filter Options</h2>
+
+                <!-- Category filter -->
+                <fieldset class="filter-section">
+                    <legend>Category:</legend>
+                    <label>
+                        <input type="checkbox" name="category" value="clothing" />
+                        Clothing
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="electronics" />
+                        Electronics
+                    </label>
+                    <!-- Add more categories as needed -->
+                </fieldset>
+
+                <!-- Price filter -->
+                <fieldset class="filter-section">
+                    <legend>Price:</legend>
+                    <label>
+                        <input type="radio" name="price" value="0" checked />
+                        All
+                    </label>
+                    <label>
+                        <input type="radio" name="price" value="20" />
+                        $0 - $20
+                    </label>
+                    <label>
+                        <input type="radio" name="price" value="50" />
+                        $20 - $50
+                    </label>
+                    <!-- Add more price ranges as needed -->
+                </fieldset>
+
+                <button class="reset-btn reset-btn_pt " onclick="resetFilters()">Reset Filters</button>
+            </div>
+        </aside>
+
+
+        <section class="section_pt" style="padding-top: 60px;">
+            <% image.map((item, index)=> { %>
+                <div class="product product_pt" style="width: 390px; height: 460px;" data-category="clothing"
+                    data-price="20">
+                    <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/<%= item.image %>" alt="Clothing Product" />
+                    <h3 class="title_name">
+                        <%= item.name%>
+                    </h3>
+                    <p class="price_name">
+                        <span>
+                            <%= item.price.toFixed(2) %>
+                        </span> $
+                    </p>
+                    <input type="number" name="soluong" class="input_number_name" min="1" max="10" value="1">
+
+                    <a href="/productsDetail/<%= item.id%>" class="btn view-button btn_submit"> Xem </a>
+
+                    <button onclick="them_vao_gio_hang(this)"
+                        class="btn add-to-cart-button add-to-cart-button_pt btn_add ">Thêm giỏ hàng</button>
+
+                        <input type="text" hidden class="id_product" value="<%= item.id%>" >
+
+                </div>
+                <% }) %>
+
+
+
+                    <!-- Add more products with appropriate data-category and data-price attributes -->
+        </section>
+
+    </main>
+
+
+
+    <!-- pagination -->
+
+    <div class="pagination pagination_pt mb-3">
+        <nav aria-label="Page navigation example">
+            <nav aria-label="Page navigation example ">
+                <ul class="pagination pagination_pt">
+                    <li class="page-item"><a class="page-link"
+                            href="?page=<%= page <=1 ? page=1 : page -1 %>">Previous</a>
+                    </li>
+
+                    <% for(i=1 ;i<=totalPage;i++) { %>
+                        <li>
+                            <a href="?page=<%=i%>" class="<%= page == i ? 'active' : '' %> item_page ">
+                                <%= i%>
+                            </a>
+                        </li>
+                        <% } %>
+
+
+                            <li class="page-item"><a class="page-link"
+                                    href="?page=<%= page >= totalPage ? totalPage : page+1   %>">Next</a></li>
+                </ul>
+            </nav>
+        </nav>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer section">
+
+        <div class="footer-container container d-grid">
+
+            <div class="company-data">
+                <a href="/">
+                    <!-- <img src="./assets/images/icon.png" alt=""> -->
+                    <h3 class="animate-charcter">DarkT </h3>
+                </a>
+                <p class="company-description">
+                    DarkT - Nơi tinh tế gặp gỡ với phong cách. Chúng tôi không chỉ bán hàng,
+                    chúng tôi tạo nên trải nghiệm độc đáo cho khách hàng.
+                </p>
+
+                <ul class="list social-media">
+                    <li class="list-item">
+                        <a href="https://www.facebook.com/Narutocunung/" class="list-link">
+                            <i class="ri-facebook-circle-line"></i>
+                        </a>
+                        <a href="https://www.instagram.com/khanhho741/" class="list-link">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://twitter.com/khanhho741" class="list-link">
+                            <i class="ri-twitter-line"></i>
+                        </a>
+                        <a href="#" class="list-link">
+                            <i class="ri-youtube-line"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <span class="copyright-notice">&copy; 2022 DarkT. All rights reserved</span>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Danh Mục</h6>
+
+                <ul class="list footer-list">
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thời Trang</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Nghệ Thuật Sáng Tạo
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Cosplay</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Công Nghệ
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thể Thao
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Khoa Học
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Liên Kết Hữu Ích</h6>
+
+                <ul class="list footer-list">
+                    <li class="list-item">
+                        <a href="#" class="list-link">Trang chủ</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Yếu tố</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thẻ</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Tác giả</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thành viên</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Vấn đề</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h6 class="title footer-title">Công Ty</h6>
+
+                <ul class="list footer-list">
+                    <li class="list-item">
+                        <a href="#" class="list-link">Liên hệ chúng tôi</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">F.A.Q</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Sự nghiệp</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Người sáng lập</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Thành viên</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" class="list-link">Địa chỉ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Nhúng JavaScript -->
+    <script src="https://thoitrangdarkt-com.onrender.com/congkhai/assets/js/main.js"></script>
+
+    <!-- nhúng jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous">
+        </script>
+
+    <script>
+
+
+
+        function them_vao_gio_hang(e) {
+            const data = e.parentElement.children;
+
+            let hinh = data[0].src;
+            let tensp = data[1].innerText;
+            let soluongsp = data[3].value;
+            let gia = data[2].children[0].innerText;
+            let ProductID = data[6].value
+           
+
+            let sp = {
+                ProductID : ProductID,     
+                hinh: hinh,
+                tensp: tensp,
+                soluongsp: soluongsp,
+                gia: gia
+            };
+
+            // Lấy dữ liệu hiện tại từ localStorage (nếu có)
+            let giohang = JSON.parse(localStorage.getItem("giohang")) || [];
+
+            // Thêm sản phẩm vào giỏ hàng
+            giohang.push(sp);
+
+            // Lưu lại giỏ hàng mới vào localStorage
+            localStorage.setItem("giohang", JSON.stringify(giohang));
+
+            // Cập nhật số lượng trên biểu tượng giỏ hàng
+            capNhatSoLuong(giohang.length);
+        }
+
+
+
+
+        //  an hien gio hang
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartIcon = document.querySelector(".btn_icon_cart")
+            const showCart = document.querySelector(".showcart");
+
+            // Show cart
+            cartIcon.addEventListener("click", function () {
+                loadDuLieuVoGioHang()
+                showCart.classList.toggle("block")
+                loadDuLieuVoGioHang()
+            });
+
+
+        });
+
+
+        $(document).ready(function () {
+            const click_profile = document.querySelector(".click_profile")
+            click_profile.addEventListener("click", (e) => {
+                console.log("id hien tai ", document.querySelector(".id_user").value)
+                document.location.href = `/profile/${document.querySelector(".id_user").value}`
+            })
+        })
+
+
+        // cap nhat gio hang
+        function capNhatSoLuong(sl) {
+            const icon_show_cart = document.querySelector(".icon_show_cart")
+            icon_show_cart.innerText = sl
+        }
+
+        // load du lieu vo gio hang
+        function loadDuLieuVoGioHang() {
+            let tongDonHang = 0;
+
+            // Lấy dữ liệu từ localStorage
+            let giohang = JSON.parse(localStorage.getItem("giohang")) || [];
+
+            // Hiển thị sản phẩm trong giỏ hàng
+            document.querySelector(".my_cart").innerHTML = giohang.map((item, index) => {
+                let tongThanhTien = parseInt(item.gia) * parseInt(item.soluongsp);
+                tongDonHang += tongThanhTien;
+
+                return `
+            <tr>
+                <td>${index + 1}</td>
+                <td><img style="width: 50px;" src="${item.hinh}" alt=""></td>
+                <td>${item.tensp}</td>
+                <td>${item.gia}</td>
+                <td>${item.soluongsp}</td>
+                <td>
+                    <div>${tongThanhTien}</div>
+                </td>
+            </tr>
+        `;
+            });
+
+            // Hiển thị tổng đơn hàng
+            document.querySelector(".tong_don_hang").innerText = tongDonHang;
+        }
+
+        // Thực hiện cập nhật số lượng khi trang được tải
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy dữ liệu từ localStorage
+            let giohang = JSON.parse(localStorage.getItem("giohang")) || [];
+
+            // Cập nhật số lượng trên biểu tượng giỏ hàng
+            capNhatSoLuong(giohang.length);
+        });
+
+    </script>
+
+</body>
+
+</html>
