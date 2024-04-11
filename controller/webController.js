@@ -742,8 +742,7 @@ const getProducts = async (req, res) => {
     }
 
     const [rows, fields] = await pool.execute(
-      "SELECT * FROM product WHERE status = 1 LIMIT ?, ?",
-      [start, limit]
+     `SELECT * FROM product WHERE status = 1 LIMIT ${start}, ${limit} `
     );
 
     res.render("Products.ejs", {
