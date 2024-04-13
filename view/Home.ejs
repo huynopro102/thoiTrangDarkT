@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/images/logo2.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="https://thoitrangdarkt-com.onrender.com/congkhai/assets/images/logo2.png">
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Swiper.js -->
@@ -240,8 +241,8 @@
                     <% list_sp.map((item)=> { %>
                         <a href="/productsDetail/<%= item.id%>" class="article swiper-slide">
 
-                            <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/<%= item.image%>" alt=""
-                                class="article-image">
+                            <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/<%= item.image%>"
+                                alt="" class="article-image">
 
                             <div class="article-data">
                                 <span></span>
@@ -276,8 +277,8 @@
 
                 <a href="#" class="article d-grid">
                     <div class="older-posts-article-image-wrapper">
-                        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702134099453-323829208-aobaba2.png" alt=""
-                            class="article-image">
+                        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702134099453-323829208-aobaba2.png"
+                            alt="" class="article-image">
                     </div>
 
                     <div class="article-data-container">
@@ -381,8 +382,8 @@
 
                 <a href="#" class="article d-grid">
                     <div class="older-posts-article-image-wrapper">
-                        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702193655197-829090888-mu2.jpg" alt=""
-                            class="article-image">
+                        <img src="https://thoitrangdarkt-com.onrender.com/congkhai/img_product/1702193655197-829090888-mu2.jpg"
+                            alt="" class="article-image">
                     </div>
 
                     <div class="article-data-container">
@@ -561,6 +562,39 @@
             </div>
         </div>
     </footer>
+
+
+
+
+    <!-- Mã nhúng Messenger -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v12.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- Nhúng Messenger vào trang -->
+    <div class="fb-customerchat"
+     attribution="setup_tool"
+      page_id="230118520194464" 
+      theme_color="#0084FF">
+    </div>
+
+
+
+
 
 
 
