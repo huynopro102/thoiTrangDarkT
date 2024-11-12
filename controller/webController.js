@@ -598,12 +598,12 @@ let getHomeAdmin = async (req, res) => {
   res.clearCookie("tokenAdmin");
   res.redirect("/");
 };
+
 // get home
 const getHome = async (req, res) => {
   console.log("co kkee ", req.cookies);
-
   try {
-    const [sp, fieldsss] = await pool.execute(" select * from product ");
+    const [sp, fieldsss] = await pool.execute("select * from product ");
     console.log("list sp ", sp);
 
     // Define list_sp in both scenarios
@@ -635,6 +635,7 @@ const getHome = async (req, res) => {
       .render("error.ejs", { errorMessage: "Internal Server Error" });
   }
 };
+
 const getLogin = (req, res) => {
   res.render("Login.ejs");
 };
@@ -794,7 +795,6 @@ const postLogin = async (req, res) => {
 };
 
 // product
-
 let gethomeControllerProduct = async (req, res) => {
   try {
     let _page = req.query.page ? req.query.page : 1;

@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:lts-oraclelinux9
+    container_name: db_thoiTrangDarkT
+    environment:
+      MYSQL_DATABASE: nodejsbasic
+      MYSQL_ROOT_PASSWORD: 123
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_thoiTrangDarkT:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      PMA_HOST: db_thoiTrangDarkT
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+volumes:
+  db_thoiTrangDarkT:

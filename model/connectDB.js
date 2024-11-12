@@ -1,13 +1,18 @@
 // get the client
 const mysql = require('mysql2/promise');
-
+require("dotenv").config()
 // create the connection to database
  const pool = mysql.createPool({
-  port : '3307',
-  host: '14.225.218.25',
-  user: 'huynguyen1',
-  password : "123",
-  database: 'nodejsbasic'
+  // port: '3306',
+  // host: 'sql103.infinityfree.com',
+  // user: 'if0_37668637_db_huynguyen',
+  // password: 'AEJxbjqvAlXqE',
+  // database: 'if0_37668637_db_huynguyen'
+  port: process.env.PORT,
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE
 });
 
 

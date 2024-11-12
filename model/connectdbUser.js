@@ -2,13 +2,12 @@ const mysql = require("mysql2/promise")
 
 
 const poolUser = mysql.createPool({
-  port : '3307',
-  host: '14.225.218.25',
-  user: 'huynguyen1',
-  password : "123",
+  port: '3306',
+  host: '13.215.153.56',
+  user: 'root',
+  password: 'root',
   database: 'nodejsbasic'
   });
   
 
 module.exports = poolUser
-
