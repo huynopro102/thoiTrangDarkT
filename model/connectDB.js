@@ -8,7 +8,7 @@ require("dotenv").config()
   // user: 'if0_37668637_db_huynguyen',
   // password: 'AEJxbjqvAlXqE',
   // database: 'if0_37668637_db_huynguyen'
-  port: process.env.PORT,
+  port: process.env.PORT_DB,
   host: process.env.HOST,
   user: process.env.USER,
   password: process.env.PASSWORD,
