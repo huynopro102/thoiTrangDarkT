@@ -21,8 +21,8 @@ let gethomeControllerCategory = async (req, res) => {
   //
   if (name) {
     const [rows, fields] = await pool.execute(
-      "SELECT * FROM `category` where `name` like ? limit ? , ? ",
-      [`%${name}%`, start, limit]
+      `SELECT * FROM category where name like ? limit ${start} , ${limit} `,
+      [`%${name}%`]
     );
     res.render("CategoryAdmin.ejs", {
       dataUser: rows ? rows : [],
@@ -30,10 +30,7 @@ let gethomeControllerCategory = async (req, res) => {
       page: parseInt(_page),
     });
   } else {
-    const [rows, fields] = await pool.execute(
-      "SELECT * FROM `category` limit ? , ? ",
-      [start, limit]
-    );
+    const [rows, fields] = await pool.execute(`SELECT * FROM category limit ${start} , ${limit} `);
     res.render("CategoryAdmin.ejs", {
       dataUser: rows ? rows : [],
       totalPage: totalPage,

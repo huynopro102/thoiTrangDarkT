@@ -20,7 +20,6 @@ require("dotenv").config()
 const port = 4001
 // stati file
 configeFileStatic(app,path,__dirname)
-console.log("__dirname",__dirname+"\\public")
 // view engine
 configeViewEngine(app,path,__dirname)
 

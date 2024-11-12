@@ -4,12 +4,12 @@ const path = require("path")
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        console.log("Đây là app-root-path", appRoot.path +"/public/img_product");
-        cb(null, appRoot.path+"/public/img_product");
+        console.log("Đây là app-root-path", appRoot.path +"/src/public/img_product");
+        cb(null, appRoot.path+"/src/public/img_product");
     },
     filename: function (req, file, cb) {
       console.log("file upload",file)
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        const uniqueSuffix = Date.now() ;
         cb(null,   uniqueSuffix + '-' + file.originalname  );
     }
 });

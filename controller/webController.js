@@ -801,6 +801,7 @@ let gethomeControllerProduct = async (req, res) => {
     // let totalRow = 20;
     let name = req.query.name;
 
+
     // total tổng các item trong database
     const [total, fields] = await pool.execute(
       "select count(*) as total from product"
@@ -809,11 +810,10 @@ let gethomeControllerProduct = async (req, res) => {
 
     // tong so trang
     let totalPage = Math.ceil(totalRow / limit);
-
+    console.log(start , limit ) 
     if (name) {
       const [rows, fields] = await pool.execute(
-        "SELECT * FROM `product` p JOIN category c ON p.category_id = c.id WHERE p.`name` LIKE ? LIMIT ? , ?",
-        [`%${name}%`, start, limit]
+        `SELECT * FROM product p JOIN category c ON p.category_id = c.id WHERE p.name LIKE ? LIMIT ${start},${limit}`,[`%${name}%`]
       );
 
       res.render("ProductsAdmin.ejs", {
@@ -823,9 +823,9 @@ let gethomeControllerProduct = async (req, res) => {
       });
     } else {
       const [rows, fields] = await pool.execute(
-        "SELECT p.*, c.name as cname FROM `product` p JOIN category c ON p.category_id = c.id LIMIT ? , ?",
-        [start, limit]
+        `SELECT p.*, c.name as cname FROM product p JOIN category c ON p.category_id = c.id LIMIT ${start}, ${limit}`
       );
+      
       res.render("ProductsAdmin.ejs", {
         dataProduct: rows ? rows : [],
         totalPage: totalPage,
@@ -868,8 +868,7 @@ let getProductsDeleteAdmin = async (req, res) => {
 
       if (rows.length > 0) {
         // Nếu sản phẩm tồn tại, thực hiện câu lệnh DELETE
-        await pool.execute("DELETE FROM product WHERE id = ?", [id]);
-
+        await pool.execute(`DELETE FROM product WHERE id = ${id}`);
         res.redirect("/admin/v1/product"); // Chuyển hướng sau khi xóa thành công
       } else {
         res.render("err500.ejs"); // Xử lý trường hợp sản phẩm không tồn tại
