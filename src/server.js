@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 // dotenv
 require("dotenv").config()
-const port = process.env.PORT || 4002
+const port = 4001
 // stati file
 configeFileStatic(app,path,__dirname)
 console.log("__dirname",__dirname+"\\public")

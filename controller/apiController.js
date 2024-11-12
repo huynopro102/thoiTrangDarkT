@@ -68,7 +68,7 @@ let postForgotPassword = async (req, res) => {
     [email]
   );
   console.log(email1);
-  if (email.length == 0) {
+  if (email1[0].length == 0) {
     console.log("1");
     return res.status(404).json("khong tim thay");
   } else {

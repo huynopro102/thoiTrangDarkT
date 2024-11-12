@@ -1,5 +1,5 @@
 const mysql = require("mysql2/promise")
-
+require("dotenv").config()
 
 const poolUser = mysql.createPool({
   port: process.env.PORT,
