@@ -561,8 +561,7 @@ let getDeteleAdmin = async (req, res) => {
   const username = req.params.username;
   console.log(id);
   const [rows, fields] = await pool.execute(
-    "SELECT * FROM `datausers` where id = ? and username = ? ",
-    [id, username]
+    `SELECT * FROM datausers where id = ? and username = ? `, [id, username]
   );
   if (username && id && rows[0].id) {
     const user = await pool.execute("delete from datausers where id = ?", [id]);
