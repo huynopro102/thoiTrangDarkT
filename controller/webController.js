@@ -483,7 +483,7 @@ let gethomeControllerCategory = async (req, res) => {
 let getAccountsEditAdmin = async (req, res) => {
   const itemId = req.params.id;
   const [rows, fields] = await pool.execute(
-    "SELECT * FROM `datausers` where id = ? ",
+    `SELECT * FROM datausers where id = ? `,
     [itemId]
   );
 
@@ -508,8 +508,7 @@ let getCategorysEditAdmin = async (req, res) => {
 
 // get home admin
 let gethomeController = async (req, res) => {
-  const [rows, fields] = await pool.execute("SELECT * FROM `datausers`");
-  // await pool.execute( 'SELECT * FROM `users`') sẽ trả về 1 mảng các phần tử trong db , 2 là trả về fields
+  const [rows, fields] = await pool.execute(`SELECT * FROM datausers`);
   res.render("HomeAdmin.ejs", { dataUser: rows });
 };
 
@@ -768,7 +767,7 @@ const postLogin = async (req, res) => {
       .json({ error: "Username and password are required." });
   }
   const [rows, fields] = await pool.execute(
-    "SELECT * FROM `datausers` where username = ? and password = ?",
+    `SELECT * FROM datausers where username = ? and password = ?`,
     [username, password]
   );
 
