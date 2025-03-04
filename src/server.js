@@ -9,7 +9,8 @@ const initApiRouter = require("../router/api")
 const cookieParser = require('cookie-parser');
 
 // variable global url
-app.locals.BASE_URL  = "http://localhost:4001" || process.env.HOST
+app.locals.BASE_URL  = "https://thoitrangdarkt-com.onrender.com" || process.env.HOST_URL
+
 
 // Middleware parse body
 app.use(express.json());
