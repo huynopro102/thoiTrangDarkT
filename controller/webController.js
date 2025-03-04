@@ -617,6 +617,9 @@ const   getHome = async (req, res) => {
         [id[0]]
       );
       console.log("data lay ddc ", rows[0]);
+      if(!rows[0] || !rows[0].username){
+        return res.render("Home.ejs", { data: "", id: "", list_sp: list_sp });
+        }
       return res.render("Home.ejs", {
         data: rows[0].username,
         id: rows[0].id,

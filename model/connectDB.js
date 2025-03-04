@@ -17,7 +17,13 @@ require("dotenv").config()
 
 pool.getConnection()
 .then(() => console.log('Connected to the MySQL database.'))
-.catch((err) => console.error('MySQL connection error: ', err));
-
+.catch((err) => console.error('MySQL connection error: ', err))
+.finally(()=>{
+  console.log(process.env.PORT_DB)  
+  console.log(process.env.HOST)
+  console.log(process.env.USER)
+  console.log(process.env.PASSWORD)
+  console.log(process.env.DATABASE) 
+})
 
 module.exports = pool
