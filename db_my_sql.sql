@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th2 03, 2024 lúc 09:05 AM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Máy chủ: db
+-- Thời gian đã tạo: Th3 04, 2025 lúc 06:08 AM
+-- Phiên bản máy phục vụ: 8.4.4
+-- Phiên bản PHP: 8.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `nodejsbasic`
+-- Cơ sở dữ liệu: `thoitrangdarkt`
 --
 
 -- --------------------------------------------------------
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `status` tinyint(4) DEFAULT 1
+  `id` int NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -57,10 +57,10 @@ INSERT INTO `category` (`id`, `name`, `status`) VALUES
 --
 
 CREATE TABLE `datausers` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `id` int NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `admin` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -69,13 +69,8 @@ CREATE TABLE `datausers` (
 --
 
 INSERT INTO `datausers` (`id`, `username`, `password`, `email`, `admin`) VALUES
-(69, 'tran van d', '$2b$10$KnEj5bIHuGIAngLI1m9vmOyuFcnSX/jZBhnh2hGV1aidZReAhl30S', 'tranvand@gmail.com', 0),
-(70, 'admin', '$2b$10$tiYWl2Dcunlybz2S5UW0JuQZiB95Lq.bPGxVQGljs6khF16zcfUxq', 'sodienthoai1230123@gmail.com', 1),
-(71, 'nguyen thi a', '$2a$12$fcVdESr21zRSU4QkgYVQ1uTYwHGdOn9Q86kjEJu0zD63H6XANMZ9C', 'nguyenthia@gmail.com', 0),
-(72, 'nguyen van d', '$2b$10$drO/YthodvCzo/vvXsHaSeVE9s1V/T7i4LgpDBQqZXiFTkizP3nXa', 'nguyenvand@gmail.com', 0),
-(73, 'nguyen thi m', '$2b$10$A51DY/IwjWlMCWsc2Hck/eucyZU/Zgf09XYkpzdV62AcEC7Zh4kK.', 'nguyenthim@gmail.com', 0),
-(78, 'nguyenvanl', '$2b$10$kG7sxKsY3H3lQdd027smV.bVpbVhgCMAANizmaH/sQhfdq/F9St9W', 'nguyenvanl@gmail.com', 0),
-(79, 'minh ', '$2b$10$mJOeNRsAnPh7IzpQxHDVbew6X3yxK5f2U7MpZgBdBx/c4LFOk6HXq', 'paimon2210@gmail.com', 0);
+(80, 'nguyentuanhuy', '$2b$10$LhwI3umEIqbf6ogbWdTIvuZfjM9/dCWXSbbvLNXXxDYNF1/9gRtcq', 'huynopro102@gmail.com', 1),
+(81, 'nguyenvana', '$2b$10$tme61Rg.VOPEMfGscR2nBe/4CQuuAWJ.x8lBUjUUeQJ4uLfIe/vEW', 'sodienthoai1230123@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -84,12 +79,12 @@ INSERT INTO `datausers` (`id`, `username`, `password`, `email`, `admin`) VALUES
 --
 
 CREATE TABLE `orderinginformation` (
-  `OrderingInfoID` int(11) NOT NULL,
-  `OrderID` int(11) NOT NULL,
-  `CustomerName` varchar(255) NOT NULL,
-  `CustomerEmail` varchar(255) NOT NULL,
-  `CustomerAddress` varchar(255) NOT NULL,
-  `CustomerPhone` varchar(20) NOT NULL
+  `OrderingInfoID` int NOT NULL,
+  `OrderID` int NOT NULL,
+  `CustomerName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `CustomerEmail` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `CustomerAddress` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `CustomerPhone` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -104,7 +99,10 @@ INSERT INTO `orderinginformation` (`OrderingInfoID`, `OrderID`, `CustomerName`, 
 (8, 77, 'nguyen van d', 'nguyenvand@gmail.com', '717 Nguyễn Thị Thập, Quận 7, TP.Hồ Chí Minh\n', '2367799715'),
 (23, 97, 'nguyen thi ', 'nguyenthia@gmail.com', '456 Đống Đa, Hà Nội', '5324091963'),
 (24, 98, 'nguyen thi m1 ', 'nguyenthim@gmail.com', '789 Cầu Giấy, Hà Nội\n', '0615519662'),
-(25, 99, 'nguyen van l', 'nguyenvanl@gmail.com', '101 Trần Hưng Đạo, Quận 5, TP.Hồ Chí Minh', '0615519662');
+(25, 99, 'nguyen van l', 'nguyenvanl@gmail.com', '101 Trần Hưng Đạo, Quận 5, TP.Hồ Chí Minh', '0615519662'),
+(30, 104, 'nguyen tuan huy', 'huynopro102@gmail.com', 'ha noi', '0344403943'),
+(31, 105, 'nguyen van a', 'sodienthoai1230123@gmail.com', 'hcm', '0344444049'),
+(32, 106, 'nguyen van a', 'sodienthoai1230123@gmail.com', 'thu duc hcm', '0344493919');
 
 -- --------------------------------------------------------
 
@@ -113,10 +111,10 @@ INSERT INTO `orderinginformation` (`OrderingInfoID`, `OrderID`, `CustomerName`, 
 --
 
 CREATE TABLE `orderitem` (
-  `OrderItemID` int(11) NOT NULL,
-  `OrderID` int(11) DEFAULT NULL,
-  `ProductID` int(11) DEFAULT NULL,
-  `Quantity` int(11) DEFAULT NULL,
+  `OrderItemID` int NOT NULL,
+  `OrderID` int DEFAULT NULL,
+  `ProductID` int DEFAULT NULL,
+  `Quantity` int DEFAULT NULL,
   `PricePerUnit` float DEFAULT NULL,
   `TotalPrice` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -142,7 +140,12 @@ INSERT INTO `orderitem` (`OrderItemID`, `OrderID`, `ProductID`, `Quantity`, `Pri
 (152, 98, 33, 1, 16.42, 16.42),
 (153, 98, 34, 1, 5.26, 5.26),
 (154, 98, 35, 1, 6.57, 6.57),
-(155, 99, 44, 5, 80.11, 400.55);
+(155, 99, 44, 5, 80.11, 400.55),
+(156, 104, 36, 2, 39.03, 78.06),
+(157, 105, 36, 1, 39.03, 39.03),
+(158, 105, 37, 2, 5.34, 10.68),
+(159, 106, 38, 2, 22.55, 45.1),
+(160, 106, 44, 1, 80.11, 80.11);
 
 -- --------------------------------------------------------
 
@@ -151,11 +154,11 @@ INSERT INTO `orderitem` (`OrderItemID`, `OrderID`, `ProductID`, `Quantity`, `Pri
 --
 
 CREATE TABLE `orders` (
-  `Order_ID` int(11) NOT NULL,
-  `UserID` int(11) DEFAULT NULL,
+  `Order_ID` int NOT NULL,
+  `UserID` int DEFAULT NULL,
   `TotalAmount` float DEFAULT NULL,
-  `OrderDate` text DEFAULT NULL,
-  `Status` varchar(50) DEFAULT NULL
+  `OrderDate` text COLLATE utf8mb4_general_ci,
+  `Status` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -170,7 +173,10 @@ INSERT INTO `orders` (`Order_ID`, `UserID`, `TotalAmount`, `OrderDate`, `Status`
 (77, 72, 376, ' 22 giờ 43 phút / ngày 27 tháng 12 năm 2023 ', 'xác nhận'),
 (97, 71, 301, ' 22 giờ 49 phút / ngày 28 tháng 12 năm 2023 ', 'chưa xác nhận'),
 (98, 73, 27, ' 14 giờ 19 phút / ngày 31 tháng 12 năm 2023 ', 'chưa xác nhận'),
-(99, 78, 400, ' 16 giờ 5 phút / ngày 2 tháng 1 năm 2024 ', 'chưa xác nhận');
+(99, 78, 400, ' 16 giờ 5 phút / ngày 2 tháng 1 năm 2024 ', 'chưa xác nhận'),
+(104, 80, 78, ' 11 giờ 47 phút / ngày 4 tháng 3 năm 2025 ', 'chưa xác nhận'),
+(105, 81, 49, ' 13 giờ 3 phút / ngày 4 tháng 3 năm 2025 ', 'chưa xác nhận'),
+(106, 81, 124, ' 13 giờ 4 phút / ngày 4 tháng 3 năm 2025 ', 'xác nhận');
 
 -- --------------------------------------------------------
 
@@ -179,13 +185,13 @@ INSERT INTO `orders` (`Order_ID`, `UserID`, `TotalAmount`, `OrderDate`, `Status`
 --
 
 CREATE TABLE `product` (
-  `id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL,
+  `id` int NOT NULL,
+  `name` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
   `price` float NOT NULL,
-  `sale_price` float DEFAULT 0,
-  `image` varchar(200) DEFAULT NULL,
-  `category_id` int(11) NOT NULL,
-  `status` tinyint(4) DEFAULT 1
+  `sale_price` float DEFAULT '0',
+  `image` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `category_id` int NOT NULL,
+  `status` tinyint DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -200,27 +206,14 @@ INSERT INTO `product` (`id`, `name`, `price`, `sale_price`, `image`, `category_i
 (36, 'Túi Duffel 4ATHLTS', 39.03, 4000, '1703064596326-795684910-TÃºi Duffel 4ATHLTS.jpg', 2, 1),
 (37, 'Landlord Mũ beret Không Vành', 5.34, 4000, '1703065024318-71617753-Landlord MÅ© beret KhÃ´ng VÃ nh.jpg', 6, 1),
 (38, 'mũ beret nữ', 22.55, 5000, '1703065525940-813254480-mu-beret-nu-dep.jpg', 6, 1),
-(39, 'xe tăng merkava', 400000000, 0, '1702194391247-331677408-xe tang merkava.jpg', 8, 1),
+(39, 'xe tăng merkava', 400000000, 0, '1702194391247-331677408-xe tang merkava.jpg', 8, 0),
 (40, 'máy bay ', 1, 0, '1702195251898-468460426-may bay giay.jpg', 9, 1),
 (43, 'Genuine Recycled Woolly Ski Hat ', 147.89, 21, '1703066318598-123135193-mu long cuu.jpg', 7, 1),
 (44, 'Giày Vans Old Skool', 80.11, 12, '1702450766291-526626297-giay vans.jpg', 16, 1),
 (45, 'adidas X Speedportal .1 FG', 63.68, 0, '1702474647741-198297940-giay adidas.jpg', 18, 1),
 (46, 'Giày cầu lông YONEX POWER CUSHION 65 Z2 MOMOTA', 106.81, 0, '1703066829449-234317655-giay cau long.png', 16, 1),
-(47, 'Giày Yonex Comfort Z3 Men 2022 ', 115.03, 0, '1703067160451-227768435-GiÃ y Yonex Comfort Z3 Men 2022.jpg', 16, 1);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `firstName` varchar(255) NOT NULL,
-  `lastName` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(47, 'Giày Yonex Comfort Z3 Men 2022 ', 115.03, 0, '1703067160451-227768435-GiÃ y Yonex Comfort Z3 Men 2022.jpg', 16, 1),
+(48, 'túi xách juno', 1000, 0, '1741068463801-tui_xach_juno.jpg', 2, 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -269,12 +262,6 @@ ALTER TABLE `product`
   ADD KEY `category_id` (`category_id`);
 
 --
--- Chỉ mục cho bảng `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -282,63 +269,57 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `datausers`
 --
 ALTER TABLE `datausers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT cho bảng `orderinginformation`
 --
 ALTER TABLE `orderinginformation`
-  MODIFY `OrderingInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `OrderingInfoID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT cho bảng `orderitem`
 --
 ALTER TABLE `orderitem`
-  MODIFY `OrderItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `OrderItemID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `Order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `Order_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT cho bảng `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- Các ràng buộc cho các bảng đã đổ
+-- Ràng buộc đối với các bảng kết xuất
 --
 
 --
--- Các ràng buộc cho bảng `orderinginformation`
+-- Ràng buộc cho bảng `orderinginformation`
 --
 ALTER TABLE `orderinginformation`
   ADD CONSTRAINT `orderinginformation_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`Order_ID`);
 
 --
--- Các ràng buộc cho bảng `orderitem`
+-- Ràng buộc cho bảng `orderitem`
 --
 ALTER TABLE `orderitem`
   ADD CONSTRAINT `orderitem_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`Order_ID`),
   ADD CONSTRAINT `orderitem_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `product` (`id`);
 
 --
--- Các ràng buộc cho bảng `product`
+-- Ràng buộc cho bảng `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);

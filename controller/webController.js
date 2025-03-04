@@ -596,7 +596,7 @@ let getHomeAdmin = async (req, res) => {
 };
 
 // get home
-const getHome = async (req, res) => {
+const   getHome = async (req, res) => {
   console.log("co kkee ", req.cookies);
   try {
     const [sp, fieldsss] = await pool.execute("select * from product ");

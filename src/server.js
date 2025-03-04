@@ -8,6 +8,9 @@ const initWebRouter = require("../router/web")
 const initApiRouter = require("../router/api")
 const cookieParser = require('cookie-parser');
 
+// variable global url
+app.locals.BASE_URL  = "http://localhost:4001" || process.env.HOST
+
 // Middleware parse body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
